@@ -21,29 +21,32 @@
         }
         .message {
             font-size: 16px;
-            color: #333;
+            color: #9cccff; /* 原始颜色#333 */
         }
-        
+
         .footer {
             position: fixed; /* 固定定位到视口底部 */
             left: 0;
             bottom: 0;
             width: 100%; /* 宽度占满整个视口 */
-            background-color: #c2c2c2; /* 背景颜色 */
+            background-color: #007bff; /* 背景颜色 */
             color: #fff; /* 文字颜色 */
             text-align: center; /* 文字居中 */
             padding: 10px 0; /* 内边距 */
             z-index: 1000; /* 确保在页面其他元素之上 */
         }
-
-        
         
     </style>
 </head>
 <body>
 
-    <div id="message" class="message" style="display: none;">您当前微信无法访问本站！请点击右上角选择在浏览器中打开！</div>
+    <div id="message" class="message" style="display: none;">检测成功✅！请点击右上角选择在浏览器中打开！</div>
     
+  <!-- <audio autoplay loop>
+		<source src="/tz/yinpin/yp2.mp3" type="audio/mp3"> //背景音频+循环播放
+	</audio> -->
+
+
     <!-- 其它内容 -->
     
        <!-- 底部文字 -->
@@ -53,18 +56,45 @@
     
     <!--其它内容-->
     
+    
     <script>
-        // 检测是否从微信访问
-        var isWeChat = /MicroMessenger/i.test(navigator.userAgent);
+    // 检测是否从微信或QQ访问
+    var isWeChatOrQQ = /MicroMessenger|MQQBrowser|QQ|qq|weibo/i.test(navigator.userAgent);
 
-        // 只在微信中显示消息
-        if (isWeChat) {
-            document.getElementById('message').style.display = 'block';
-        } else {
-            // 在其他浏览器中直接访问目标网址
-            window.location.href = 'http://dsw.jun04.top/';
-        }
-    </script>
+    // 如果是通过微信或QQ访问，则显示消息
+    if (isWeChatOrQQ) {
+        document.getElementById('message').style.display = 'block';
+    } else {
+        // 如果是通过其他浏览器访问，直接访问目标网址
+        window.location.href = 'http://dsw.jun04.top/';
+    }
+
+
+<!--其它内容-->
+
+
+
+	    // 音频文件的URL，确保它指向一个有效的音频文件
+var audioSrc = '/tz/yinpin/yp2.mp3';
+
+// 初始化音频元素
+var audio = new Audio(audioSrc); //点击屏幕播放音频事件
+
+// 为整个文档添加触摸事件监听器
+document.addEventListener('touchstart', function(event) {
+    // 播放音频
+    audio.play();
+}, false);
+
+
+<!-- 其它内容 -->
+
+	
+
+
+
+	    
+</script>
 
 </body>
 </html>
